@@ -1,4 +1,6 @@
-# Financial News Sentiment Analyzer (Capstone Project)
+# Financial News Sentiment Analyzer
+
+Link to Website: [Finnalyze](https://finnalyze.vercel.app)
 
 ## Overview
 

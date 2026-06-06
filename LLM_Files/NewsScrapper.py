@@ -18,11 +18,19 @@ collection = db['stockData']
 with open(os.path.join(os.getcwd(), r'stockList.json'), 'r') as f:
     stockList = json.load(f)
 
+client['Finnalyze']['metaData'].update_one(
+    {"code_1": 1},
+    {'$set': {"update_date": datetime.datetime.utcnow()}}
+)
+
+count = 0
 while True:
     
     try:
         for stock in stockList:
             os.system('cls')
+            count+=1
+            print(count)
             stockCode = stock['code'] + '.NS'
             news = yf.Ticker(stockCode).get_news()
 
@@ -47,7 +55,7 @@ while True:
                 content = article['content']['summary']
                 title = article['content']['title']
             
-                response = json.loads(Evaluate(content))['impact']
+                response = Evaluate(content)
 
                 impact_score = float(response)
 
